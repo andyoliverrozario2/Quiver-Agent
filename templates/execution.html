@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Task Execution - QuiverAgent</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <header>
+      <h1>Task Execution Results</h1>
+    </header>
+    <div class="container">
+      <h2>Results</h2>
+      <ul>
+        {% for result in results %}
+          <li>{{ result }}</li>
+        {% endfor %}
+      </ul>
+      <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    </div>
+    <footer>
+      <p>&copy; QuiverAgent</p>
+    </footer>
+  </body>
+</html>

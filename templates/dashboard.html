@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard - QuiverAgent</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <header>
+      <h1>QuiverAgent Dashboard</h1>
+    </header>
+    <div class="container">
+      <h2>Task Manager</h2>
+      <!-- Task Addition Form -->
+      <form action="{{ url_for('dashboard') }}" method="POST">
+        <input type="text" name="task" placeholder="Enter new task description..." required>
+        <select name="category" required>
+          <option value="To-Do">Generic To-Do</option>
+          <option value="Email">Email Sorting</option>
+          <option value="File">File Management</option>
+        </select>
+        <button type="submit">Add Task</button>
+      </form>
+      <!-- Display Task List -->
+     <div class="task-list">
+  <ul>
+    {% for task in tasks %}
+    <li>
+      <strong>{{ task.category }}:</strong> {{ task.description }}
+      <form action="{{ url_for('delete_task', id=task.id) }}" method="POST" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+    </div>
+    <footer>
+      <p>&copy; QuiverAgent</p>
+    </footer>
+  </body>
+</html>
+</div>
+
+<!-- Execute Tasks Button -->
+<form action="{{ url_for('execute') }}" method="POST">
+  <button type="submit">Execute All Tasks</button>
+</form>
+
+</div>
